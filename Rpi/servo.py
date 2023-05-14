@@ -5,9 +5,8 @@ sCam=15
 sEntry=12
 sExit=7
 
-GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-
+GPIO.setwarnings(False)
 GPIO.setup(sCam,GPIO.OUT)
 GPIO.setup(sEntry,GPIO.OUT)
 GPIO.setup(sExit,GPIO.OUT)
