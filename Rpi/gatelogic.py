@@ -1,20 +1,20 @@
-from servo import *
+import servo as ser
 
 def logicStat1():
-    camPosition1()#camera servo rotate to entry
+    ser.camPosition1()#camera servo rotate to entry
     #ocr func call
     #get status boolean to show completion of ocr
     #get no plate info
-    entryServo()#servo motor open for entry 
+    ser.entryServo()#servo motor open for entry 
     #return no_plate #return no plate info
 def logicStat2():
-    camPosition2()#camera servo rotate to exit
+    ser.camPosition2()#camera servo rotate to exit
     #ocr func call
     #get status boolean to show completion of ocr
     #get no plate info
-    exitServo()#servo motor open for exit 
+    ser.exitServo()#servo motor open for exit 
     #return no plate info
 
 def offState():
-    pass
-    #red and green off
+    ser.servoOff()
+    
