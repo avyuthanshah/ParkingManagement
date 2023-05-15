@@ -6,7 +6,7 @@ import easyocr
 
 
 def getText(img):
-   img = cv2.imread('images/nepali.png')
+   img = cv2.imread('tempimages/image1.png')
    # imported the image from directory
    grayConvertedImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
    # converted blue-green red to grey
