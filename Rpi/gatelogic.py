@@ -1,5 +1,6 @@
 import servo as ser
 from time import sleep
+
 def logicStat1():
     ser.camPosition1()#camera servo rotate to entry
     #ocr func call

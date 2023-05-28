@@ -2,7 +2,7 @@ import time
 import RPi.GPIO as GPIO
 from gatesensor import gatesense as gs
 import gatelogic as gl
-import sys
+
 
 #setting gpio board values for ultrasonicsensor which is interchangable
 echo1=11
@@ -29,11 +29,11 @@ if __name__=="__main__":
                 gl.logicStat2()#call exit gate function
 
             elif logic1==True and logic2==True:#number plate from entry first and then exit
-                sys.exit()
+                gl.logicStat1()
+                gl.logicStat2
 
             elif logic1==False and logic2==False:
-                sys.exit()
-            #red led on both
+                gl.offState()
 
             # Reset by pressing CTRL + C
     except KeyboardInterrupt:
