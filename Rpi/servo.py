@@ -1,3 +1,4 @@
+import numpy as np
 import RPi.GPIO as GPIO
 from time import sleep
 
@@ -18,33 +19,28 @@ servo3=GPIO.PWM(sExit,50)
 
 def camPosition1():#entry
     servo1.start(2.5)#initial 0
-    servo1.stop()
+    servo1.ChangeDutyCycle(2.5)
 
 def camPosition2():#exit
+    servo1.start(12.5)
     servo1.ChangeDutyCycle(12.5)
-    servo1.stop()
+    
 
 def entryServo():
     servo2.start(2.5)#initial 0
-    for i in range(3,7):
+    for i in np.arrange(2.5,7.6,0.1):
         servo2.ChangeDutyCycle(i)
-        sleep(0.2)
-    sleep(5)
+        sleep(0.05)
+    sleep(5)#open gate for 5 sec
     servo2.ChangeDutyCycle(2.5)
-    servo2.stop()
-    GPIO.cleanup()
-
 
 def exitServo():
-    servo3=GPIO.PWM(sExit,50)
     servo3.start(2.5)#initial 0
-    for i in range(3,7):
+    for i in np.arrange(2.5,7.6,0.1):
         servo3.ChangeDutyCycle(i)
-        sleep(0.2)
+        sleep(0.05)
     sleep(5)
     servo3.ChangeDutyCycle(2.5)
-    servo3.stop()
-    GPIO.cleanup()
 
 def servoOff():
     servo2.start(2.5)
