@@ -19,6 +19,7 @@ servo3=GPIO.PWM(sExit,50)
 def camPosition1():#entry
     servo1.start(2.5)#initial 0
     servo1.ChangeDutyCycle(2.5)
+    
 
 def camPosition2():#exit
     servo1.start(12.5)
@@ -26,52 +27,39 @@ def camPosition2():#exit
     
 
 def entryServo():
-    servo2.start(2.5)#initial 0
-    for i in range(3,9,1):
-        servo2.ChangeDutyCycle(i)
-        sleep(0.1)
+    entryServo1()
     sleep(5)#open gate for 5 sec
-    servo2.ChangeDutyCycle(2.5)
-
+    entryServo2()
 
 def exitServo():
-    servo3.start(2.5)#initial 0
-    for i in range(3,9,1):
-        servo3.ChangeDutyCycle(i)
-        sleep(0.1)
+    exitServo1()
     sleep(5)
-    servo3.ChangeDutyCycle(2.5)
-
+    exitServo2()
 
 
 def servoOff():
-    servo2.start(3)
-    servo2.ChangeDutyCycle(3)
-    servo2.stop()
-
-    servo3.start(3)
-    servo3.ChangeDutyCycle(3)
-    servo3.stop()
-
-
-
+    
+    entryServo2()
+    exitServo2()
 
 
 
 def entryServo1():#override with button entry
-    servo2.start(7.5)#initial 0
-    servo2.ChangeDutyCycle(7.5)
+    servo2.start(12.5)#initial 0
+    servo2.ChangeDutyCycle(12.5)
 def entryServo2():#override with button entry
     servo2.start(2.5)#initial 0
     servo2.ChangeDutyCycle(2.5)
-
-def exitServo2():#override with button entry
-    servo3.start(7.5)
-    servo3.ChangeDutyCycle(7.5)
+    
+def exitServo1():#override with button entry
+    servo3.start(12.5)
+    servo3.ChangeDutyCycle(12.5)
 def exitServo2():#override with button entry
     servo3.start(2.5)
     servo3.ChangeDutyCycle(2.5)
+    
 
-#camPosition1()
-#sleep(2)
-#camPosition2()
+
+#exitServo()
+
+
