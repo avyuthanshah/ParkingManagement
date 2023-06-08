@@ -17,14 +17,20 @@ def logicStat1():
     sleep(0.5)
     numberPlate=getText()#ocr func call #get no plate info
     if numberPlate!="Null":
-        entry_data(numberPlate)
-        ser.entryServo()
+        occupancy=entry_data(numberPlate)
+        if occupancy==True:
+            ser.entryServo()
+        else:
+            print('Parking Full')
         #delete image
         #return True#return status
     else:
         numberPlate=input("Enter your Number Plate manually")
-        entry_data(numberPlate)
-        ser.entryServo()
+        occupancy=entry_data(numberPlate)
+        if occupancy==True:
+            ser.entryServo()
+        else:
+            print('Parking Full')
         #delete the image
         #return False#return status
     
@@ -32,7 +38,7 @@ def logicStat2():
     ser.camPosition2()#camera servo rotate to exit
     sleep(0.5)
     numberPlate=getText()#ocr func call #get no plate info
-    if numberPlate!=0:
+    if numberPlate!="Null":
         info=get_data(numberPlate)# get corresponding values entryTime, Owner, Remaining
 
         if int(info[2]) >=1:

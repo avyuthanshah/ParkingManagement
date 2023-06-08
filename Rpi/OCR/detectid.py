@@ -89,6 +89,6 @@ def getText():
             returnString = re.sub(pattern, '', returnString.replace(" ", "")) 
             return returnString
     except:
-       return 0
+       return "Null"
 
-print(getText())
+# print(getText())
