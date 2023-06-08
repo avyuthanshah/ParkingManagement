@@ -6,7 +6,7 @@ file_path = "../shareddir/logs.csv" # file where the data log is saved
 
 def entry_data(vehicle_id): # vehicle_id is the id to be entried
     entry_time = datetime.datetime.now()
-    data = [str(vehicle_id),entry_time,"Null", "Null"] # data to be saveda
+    data = [str(vehicle_id),entry_time,"Null", 0] # data to be saveda
 
     
 
@@ -60,8 +60,12 @@ def get_data(vehicle_id):
                 break
         return info
     
-entry_data('BAA 5223')
-update_data('BAA 5223','Ram',0)
 
-info=get_data("BAA 5223")
-print(info[0])
+# info=get_data("BAA 5223")
+# print(info[0])
+# exit_time = datetime.datetime.now()
+# entry_time = datetime.datetime.strptime(info[0], "%Y-%m-%d %H:%M:%S.%f")
+# time_difference = exit_time - entry_time
+# time_difference_seconds = time_difference.total_seconds()
+# fee=time_difference_seconds*0.0275
+# print(fee)

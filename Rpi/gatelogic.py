@@ -5,11 +5,11 @@ import datetime
 from OCR.detectid2 import getText
 from log import entry_data,update_data,delete_data,get_data
 
-GPIO.setmode(GPIO.BOARD)
-entryB=31
-GPIO.setup(entryB, GPIO.IN)#button to override gate servo
-exitB=32
-GPIO.setup(exitB, GPIO.IN)#button to override exit servo
+# GPIO.setmode(GPIO.BOARD)
+# entryB=31
+# GPIO.setup(entryB, GPIO.IN)#button to override gate servo
+# exitB=32
+# GPIO.setup(exitB, GPIO.IN)#button to override exit servo
 
 
 def logicStat1():
@@ -32,7 +32,7 @@ def logicStat2():
     ser.camPosition2()#camera servo rotate to exit
     sleep(0.5)
     numberPlate=getText()#ocr func call #get no plate info
-    if numberPlate!="Null":
+    if numberPlate!=0:
         info=get_data(numberPlate)# get corresponding values entryTime, Owner, Remaining
 
         if int(info[2]) >=1:
@@ -43,16 +43,14 @@ def logicStat2():
  
         else:
             exit_time = datetime.datetime.now()
-            entry_time = datetime.datetime.strptime(info[1], "%Y-%m-%d %H:%M:%S")
+            entry_time = datetime.datetime.strptime(info[0], "%Y-%m-%d %H:%M:%S.%f")
             time_difference = exit_time - entry_time
             time_difference_seconds = time_difference.total_seconds()
-
             fee=time_difference_seconds*0.0275
-            print(fee)
+            print(f'Rs. {fee}')
 
             ser.exitServo()
 
-        #return True#return status
     
     else:
         numberPlate=input("Enter your Number Plate manually")
@@ -65,16 +63,16 @@ def logicStat2():
  
         else:
             exit_time = datetime.datetime.now()
-            entry_time = datetime.datetime.strptime(info[1], "%Y-%m-%d %H:%M:%S")
+            entry_time = datetime.datetime.strptime(info[0], "%Y-%m-%d %H:%M:%S.%f")
             time_difference = exit_time - entry_time
             time_difference_seconds = time_difference.total_seconds()
-
             fee=time_difference_seconds*0.0275
-            print(fee)
+            print(f'Rs. {fee}')
 
             ser.exitServo()
-        # return False
-    
+      
 def offState():
     ser.servoOff()
     
+
+# logicStat2()

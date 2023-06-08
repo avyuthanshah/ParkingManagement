@@ -1,2 +1,3 @@
 def getText():
-    return "B AD0153"
+    plate=input("Enter No plate dont include space")
+    return plate
