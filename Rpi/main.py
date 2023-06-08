@@ -1,4 +1,4 @@
-import time
+from time import sleep
 import RPi.GPIO as GPIO
 from gatesensor import gatesense as gs
 import gatelogic as gl
@@ -12,6 +12,7 @@ trigger2=18
 entry=gs(trigger1,echo1)
 exit=gs(trigger2,echo2)
 
+
 if __name__=="__main__":
     try:
         while True:
@@ -23,14 +24,15 @@ if __name__=="__main__":
             logic2=distExit<80
         
             if logic1==True and logic2==False:#number plate from entry
-                gl.logicStat1()#entry gate
-    
+                gl.logicStat1()#gateopen
+               
             elif logic1==False and logic2==True:#number plate from exit
                 gl.logicStat2()#call exit gate function
-
+                
             elif logic1==True and logic2==True:#number plate from entry first and then exit
-                gl.logicStat1()
-                gl.logicStat2
+                gl.logicStat1()#gateopen
+                sleep(1)
+                gl.logicStat2()
 
             elif logic1==False and logic2==False:
                 gl.offState()

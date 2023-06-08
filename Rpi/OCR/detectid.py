@@ -91,8 +91,6 @@ def getText():
         else:
             return returnString
    except:
-      return 0
+      return "Null"
 
-returnString = getText()
-
-print(returnString)
+#print(returnString)
