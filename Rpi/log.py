@@ -60,8 +60,8 @@ def get_data(vehicle_id):
                 break
         return info
     
-# entry_data('BAA 5223')
-# update_data('BAA 5223','Ram',0)
+entry_data('BAA 5223')
+update_data('BAA 5223','Ram',0)
 
-# info=get_data("BAA 5223")
-# print(type(info[0]))
+info=get_data("BAA 5223")
+print(info[0])
