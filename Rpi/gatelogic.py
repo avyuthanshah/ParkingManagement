@@ -5,7 +5,7 @@ import datetime
 from OCR.detectid2 import getText
 from log import entry_data,update_data,delete_data,get_data
 
-# GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
 # entryB=31
 # GPIO.setup(entryB, GPIO.IN)#button to override gate servo
 # exitB=32
@@ -25,7 +25,7 @@ def logicStat1():
         #delete image
         #return True#return status
     else:
-        numberPlate=input("Enter your Number Plate manually")
+        numberPlate=input("Entry Enter your Number Plate manually")
         occupancy=entry_data(numberPlate)
         if occupancy==True:
             ser.entryServo()
@@ -42,7 +42,7 @@ def logicStat2():
         info=get_data(numberPlate)# get corresponding values entryTime, Owner, Remaining
 
         if int(info[2]) >=1:
-            ser.entryServo()
+            ser.exitServo()
             print(f"Hello {info[1]}. May you have a good journey ahead")
             sleep(1)
             delete_data(numberPlate)
@@ -56,13 +56,14 @@ def logicStat2():
             print(f'Rs. {fee}')
 
             ser.exitServo()
+            delete_data(numberPlate)
 
     
     else:
-        numberPlate=input("Enter your Number Plate manually")
+        numberPlate=input("Exit Enter your Number Plate manually")
         info=get_data(numberPlate)
         if int(info[2]) >=1:
-            ser.entryServo()
+            ser.exitServo()
             print(f"Hello {info[1]}. May you have a good journey ahead")
             sleep(1)
             delete_data(numberPlate)
@@ -76,9 +77,10 @@ def logicStat2():
             print(f'Rs. {fee}')
 
             ser.exitServo()
+            delete_data(numberPlate)
       
 def offState():
     ser.servoOff()
     
-
-# logicStat2()
+#logicStat1()
+#logicStat2()

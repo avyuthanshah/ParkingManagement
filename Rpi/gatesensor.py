@@ -9,6 +9,7 @@ class gatesense:
         self.ECHO=echo
 #set GPIO Pins
     def getDistance(self):
+        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.TRIGGER, GPIO.OUT)
         GPIO.setup(self.ECHO, GPIO.IN)
  

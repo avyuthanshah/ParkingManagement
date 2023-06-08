@@ -3,6 +3,7 @@ import RPi.GPIO as GPIO
 from gatesensor import gatesense as gs
 import gatelogic as gl
 
+GPIO.setmode(GPIO.BOARD)
 
 #setting gpio board values for ultrasonicsensor which is interchangable
 echo1=11
@@ -20,8 +21,8 @@ if __name__=="__main__":
             distExit=int(float(exit.getDistance()))
         
             #implementing gate logic
-            logic1=distEntry<7
-            logic2=distExit<7
+            logic1=distEntry<5
+            logic2=distExit<5
         
             if logic1==True and logic2==False:#number plate from entry
                 gl.logicStat1()#gateopen
