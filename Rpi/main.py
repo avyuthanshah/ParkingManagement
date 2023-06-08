@@ -20,8 +20,8 @@ if __name__=="__main__":
             distExit=int(float(exit.getDistance()))
         
             #implementing gate logic
-            logic1=distEntry<80
-            logic2=distExit<80
+            logic1=distEntry<7
+            logic2=distExit<7
         
             if logic1==True and logic2==False:#number plate from entry
                 gl.logicStat1()#gateopen

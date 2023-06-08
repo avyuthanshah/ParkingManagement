@@ -47,11 +47,11 @@ def exitServo():
 
 def servoOff():
     servo2.start(2.5)
-    servo2.ChnageDutyCycle(2.5)
+    servo2.ChangeDutyCycle(2.5)
     servo2.stop()
 
     servo3.start(2.5)
-    servo3.ChnageDutyCycle(2.5)
+    servo3.ChangeDutyCycle(2.5)
     servo3.stop()
     GPIO.cleanup()
 

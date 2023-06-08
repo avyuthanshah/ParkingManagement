@@ -5,8 +5,8 @@ GPIO.setmode(GPIO.BOARD)
 
 class gatesense:
     def __init__(self,trig,echo):
-        self.Trigger=trig
-        self.Echo=echo
+        self.TRIGGER=trig
+        self.ECHO=echo
 #set GPIO Pins
     def getDistance(self):
         GPIO.setup(self.TRIGGER, GPIO.OUT)
